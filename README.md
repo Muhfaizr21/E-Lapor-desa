@@ -21,7 +21,7 @@ E-Lapor Desa adalah aplikasi sistem pelaporan berbasis web yang memungkinkan war
 - **Upload Lampiran**  
   Warga dapat melampirkan gambar atau dokumen untuk mendukung laporan.
 
-  - **Fitur ChatBot**  
+- **Fitur ChatBot**  
   Warga dapat menanyakan cara membuat laporan atau hal lain di fitur chat bot ini.
 
 ---
