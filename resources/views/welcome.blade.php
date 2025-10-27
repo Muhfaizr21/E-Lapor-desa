@@ -9,8 +9,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
+    @livewireStyles
+
     <style>
         html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; }
         .glass {
             backdrop-filter: blur(14px);
             background: rgba(255, 255, 255, 0.75);
@@ -30,7 +33,7 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-b from-blue-50 via-white to-blue-50 text-gray-800 antialiased overflow-x-hidden">
+<body class="bg-gradient-to-b from-blue-50 via-white to-blue-50 text-gray-800 antialiased">
 
     <!-- NAVBAR -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-blue-100">
@@ -74,8 +77,8 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="beranda" class="pt-40 pb-28 relative overflow-hidden text-center">
+    <!-- HERO -->
+    <section id="beranda" class="pt-40 pb-28 relative text-center">
         <div class="blob top-0 left-0 w-[600px] h-[600px] rounded-full"></div>
         <div class="blob bottom-0 right-0 w-[700px] h-[700px] rounded-full bg-blue-300 opacity-20"></div>
 
@@ -92,7 +95,6 @@
             </div>
         </div>
 
-        <!-- Scroll hint -->
         <div class="absolute bottom-10 w-full text-center">
             <a href="#fitur" class="inline-block animate-bounce text-blue-500">
                 <i class="ri-arrow-down-s-line text-3xl"></i>
@@ -104,7 +106,6 @@
     <section id="fitur" class="py-28 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold text-blue-700 mb-14" data-aos="fade-down">Fitur Unggulan eLapor</h2>
-
             <div class="grid md:grid-cols-3 gap-12">
                 @php
                     $fitur = [
@@ -159,15 +160,12 @@
                         @if($i == 1)
                             “Sekarang lapor jalan rusak bisa langsung dari HP! Prosesnya cepat banget.”
                         @elseif($i == 2)
-                            “Sebagai admin, kami jadi lebih mudah memverifikasi dan menindaklanjuti laporan.”
+                            “Pelayanan desa lebih transparan berkat eLapor. Sangat membantu warga.”
                         @else
-                            “Desain eLapor ini keren banget. Simple tapi elegan, mudah dipakai siapa pun.”
+                            “Aplikasi ini memudahkan semua pihak untuk berkoordinasi, keren sekali!”
                         @endif
                     </p>
-                    <h4 class="font-bold text-blue-700">
-                        @if($i == 1) Rina Putri @elseif($i == 2) Ahmad S. @else Budi Ramadhan @endif
-                    </h4>
-                    <p class="text-sm text-gray-500">@if($i == 1) Warga Cirebon @elseif($i == 2) Admin eLapor @else Mahasiswa Polindra @endif</p>
+                    <h5 class="font-bold text-blue-700">Warga Desa {{ $i }}</h5>
                 </div>
                 @endforeach
             </div>
@@ -175,55 +173,38 @@
     </section>
 
     <!-- KONTAK -->
-    <section id="kontak" class="py-28 bg-gradient-to-b from-blue-50 to-white text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <h3 class="text-4xl font-bold text-blue-700 mb-8" data-aos="fade-down">Hubungi Kami</h3>
-            <p class="text-gray-600 text-lg mb-8">Ada saran, pertanyaan, atau kendala? Kami siap membantu Anda kapan pun.</p>
+    <section id="kontak" class="py-28 bg-gradient-to-br from-blue-50 via-white to-blue-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold text-blue-700 mb-12" data-aos="fade-down">Hubungi Kami</h3>
+            <p class="text-gray-600 mb-8">Jika Anda memiliki pertanyaan atau laporan, silakan hubungi kami melalui form berikut:</p>
 
-            <form class="max-w-lg mx-auto bg-white rounded-3xl shadow-lg p-8 space-y-6" data-aos="fade-up">
-                <div>
-                    <input type="text" placeholder="Nama Anda" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                </div>
-                <div>
-                    <input type="email" placeholder="Email Anda" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                </div>
-                <div>
-                    <textarea placeholder="Pesan Anda" rows="5" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
-                </div>
-                <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition">Kirim Pesan</button>
-            </form>
+            @livewire('contact-form')
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-blue-700 text-white py-10 mt-20 relative overflow-hidden">
-        <div class="blob w-[400px] h-[400px] top-0 left-0 opacity-20 bg-blue-400"></div>
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center relative z-10">
-            <div>
-                <h4 class="text-2xl font-bold">eLapor</h4>
-                <p class="text-sm text-blue-200 mt-2">Dari masyarakat, untuk masyarakat — menuju Indonesia yang lebih baik.</p>
-            </div>
-            <div class="flex space-x-5 mt-6 md:mt-0">
-                <a href="#" class="text-white/80 hover:text-white text-2xl"><i class="ri-facebook-circle-fill"></i></a>
-                <a href="#" class="text-white/80 hover:text-white text-2xl"><i class="ri-twitter-x-fill"></i></a>
-                <a href="#" class="text-white/80 hover:text-white text-2xl"><i class="ri-instagram-fill"></i></a>
-            </div>
+    <footer class="bg-blue-700 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p>&copy; {{ date('Y') }} eLapor. Semua hak dilindungi.</p>
         </div>
-        <p class="text-center text-sm text-blue-200 mt-6 border-t border-blue-600 pt-4">
-            &copy; {{ date('Y') }} eLapor. Semua Hak Dilindungi.
-        </p>
     </footer>
+
+    <!-- Livewire ChatBot -->
+    <livewire:chat-bot />
 
     <!-- JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
+
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
     </script>
 
+    @livewireScripts
 </body>
 </html>

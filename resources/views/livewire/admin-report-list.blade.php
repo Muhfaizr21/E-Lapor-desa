@@ -19,6 +19,7 @@
                 <tr class="bg-red-50 text-red-700 uppercase text-sm tracking-wider">
                     <th class="p-4 border-b">Judul</th>
                     <th class="p-4 border-b">Isi Laporan</th>
+                     <th class="p-4 border-b">Gambar</th>
                     <th class="p-4 border-b">Pelapor</th>
                     <th class="p-4 border-b">Status</th>
                     <th class="p-4 border-b">Aksi</th>
@@ -29,6 +30,13 @@
                     <tr class="hover:bg-red-50 transition duration-200">
                         <td class="p-4 border-b font-medium">{{ $report->judul }}</td>
                         <td class="p-4 border-b text-gray-600">{{ Str::limit($report->isi, 60) }}</td>
+                        <td class="p-4 border-b">
+                        @if($report->foto)
+                        <img src="{{ asset('storage/' . $report->foto) }}" alt="Foto Laporan" class="w-20 h-20 object-cover rounded">
+                        @else
+                            Tidak ada foto
+                         @endif
+                        </td>
                         <td class="p-4 border-b">{{ $report->user->name ?? 'Tidak diketahui' }}</td>
                         <td class="p-4 border-b">
                             @php
